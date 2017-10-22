@@ -1,0 +1,33 @@
+package rate;
+
+import org.junit.Test;
+
+import forTests.EntrancePage;
+import forTests.TarifPage;
+import forTests.Variables;
+
+public class RateSeventh extends Variables {
+	
+	@Test
+	public void test() throws InterruptedException{
+		//7-Проверка общей цены тарифа "Стандартный" с услугой "Управление денежными потоками" в $
+		EntrancePage entrancePage = new EntrancePage();
+		TarifPage tarifPage = new TarifPage();
+														
+		//Запускаем приложение и проходим авторизацию
+		entrancePage.entranceStandUdp(driver);
+											
+		//Открываем "Информация о тарифах"
+		tarifPage.goOptionAboutTarif(driver);
+		
+		//Проверяем результат
+		if (priceDolStandUdp.equals(tarifPage.labelStandPriceUsd.getText()))
+			System.out.println("Rate Seventh test is pass");
+			else
+				System.out.println("Rate Seventh test is false");
+		
+		//Закрываем сайт
+		driver.quit();
+	}
+
+}
